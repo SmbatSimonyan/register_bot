@@ -1,13 +1,11 @@
 from telegram import Update
-from telegram import TeleBot
 from telegram.ext import Application, CommandHandler, ContextTypes
-
-from db import SessionLocal, User
-import telebot
 from dotenv import load_dotenv
 import os
+from db import SessionLocal, User
+
 load_dotenv()
-bot = telebot.TeleBot("TOKEN")
+TOKEN = os.getenv("BOT_TOKEN")
 
 
 
@@ -41,7 +39,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    app = Application.builder().token(bot).build()
+    app = Application.builder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
 
