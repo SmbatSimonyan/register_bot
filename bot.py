@@ -3,11 +3,11 @@ from telegram import TeleBot
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 from db import SessionLocal, User
-
+import telebot
 from dotenv import load_dotenv
 import os
 load_dotenv()
-bot = TeleBot(token=os.getenv("TOKEN"))
+bot = telebot.TeleBot("TOKEN")
 
 
 
