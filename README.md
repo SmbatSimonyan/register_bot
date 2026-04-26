@@ -1,92 +1,149 @@
-🤖 Register Bot (Telegram + Web Interface)
+# 🤖 Register Bot (Telegram + Web Interface)
 
-A Telegram bot with a web interface for handling user registration and data management.
+A **Telegram bot with a web interface** for handling user registration and data management.  
 The project is containerized with Docker and uses environment variables for secure configuration.
 
-🚀 Features
-🤖 Telegram bot interaction
-🧾 User registration system
-🌐 Web interface (HTML + CSS + JS)
-🗄️ Database integration (db.py)
-🔐 Environment-based configuration (.env)
-🐳 Docker & Docker Compose support
-📦 Modular structure (API, bot, DB separation)
-🛠️ Tech Stack
-Python 3
-Telegram Bot API
-Web (HTML, CSS, JavaScript)
-Docker & Docker Compose
-python-dotenv
-📁 Project Structure
+---
+
+## 🚀 Features
+
+- 🤖 Telegram bot interaction
+- 🧾 User registration system
+- 🌐 Web interface (HTML + CSS + JS)
+- 🗄️ Database integration
+- 🔐 Environment-based configuration (`.env`)
+- 🐳 Docker & Docker Compose support
+- 📦 Clean modular structure
+
+---
+
+## 🛠️ Tech Stack
+
+- Python 3
+- Telegram Bot API
+- HTML / CSS / JavaScript
+- Docker & Docker Compose
+- python-dotenv
+
+---
+
+## 📁 Project Structure
+
+```
 register_bot/
 │
-├── api.py                # API / backend logic
-├── bot.py                # Telegram bot logic
-├── db.py                 # Database operations
+├── api.py
+├── bot.py
+├── db.py
 │
-├── templates/            # HTML templates (web UI)
+├── templates/
 ├── static/
-│   ├── script.js         # Frontend JS
-│   └── style.css         # Styling
+│   ├── script.js
+│   └── style.css
 │
-├── .env                  # Environment variables (NOT committed)
+├── .env
 ├── .gitignore
 ├── .dockerignore
 │
-├── Dockerfile            # Docker image config
-├── docker-compose.yml    # Multi-container setup
+├── Dockerfile
+├── docker-compose.yml
 │
-├── requirements.txt      # Python dependencies
+├── requirements.txt
 └── README.md
-⚙️ Setup & Installation
-1. Clone the repository
+```
+
+---
+
+## ⚙️ Setup & Installation
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/SmbatSimonyan/register_bot.git
 cd register_bot
-2. Create .env file
+```
+
+---
+
+### 2. Create `.env` file
+
+```env
 BOT_TOKEN=your_telegram_bot_token
+```
 
-(Optional — depending on your code)
-
+(Optional)
+```env
 DB_URL=your_database_url
 PORT=8000
-3. Run locally (without Docker)
+```
+
+---
+
+### 3. Run locally
+
+```bash
 pip install -r requirements.txt
 python bot.py
-4. Run with Docker 🐳
+```
+
+---
+
+### 4. Run with Docker
+
+```bash
 docker-compose up --build
-🤖 Bot Usage
-Open Telegram
-Find your bot
-Send /start
-Complete registration
-🌐 Web Interface
-Accessible via browser (depending on your API setup)
-Uses:
-templates/ → HTML
-static/ → CSS & JS
-🔒 .gitignore
+```
 
-Make sure sensitive and unnecessary files are ignored:
+---
 
+## 🤖 Bot Usage
+
+1. Open Telegram  
+2. Search for your bot  
+3. Send `/start`  
+4. Complete registration  
+
+---
+
+## 🌐 Web Interface
+
+- Uses `templates/` for HTML  
+- Uses `static/` for CSS & JS  
+- Runs via your API backend  
+
+---
+
+## 🔒 .gitignore
+
+```
 venv/
 __pycache__/
 *.pyc
 .env
-🧠 Architecture
-bot.py → handles Telegram interactions
-api.py → backend / HTTP logic
-db.py → database layer
-templates + static → frontend
+```
 
-This separation makes the project easy to scale and maintain.
+---
 
-📦 Future Improvements
-Add authentication system
-Improve UI/UX
-Add admin panel
-Logging & monitoring
-Deploy to cloud (AWS, VPS, etc.)
-👤 Author
+## 🧠 Architecture
 
-Smbat Simonyan
-GitHub: https://github.com/SmbatSimonyan
+- `bot.py` → Telegram bot logic  
+- `api.py` → backend / API  
+- `db.py` → database operations  
+- `templates/ + static/` → frontend  
+
+---
+
+## 📦 Future Improvements
+
+- Admin panel  
+- Authentication system  
+- Better UI/UX  
+- Logging & monitoring  
+- Cloud deployment  
+
+---
+
+## 👤 Author
+
+**Smbat Simonyan**  
+https://github.com/SmbatSimonyan
