@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: telebot_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: telegram_bot
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # FastAPI Web Dashboard
+  api:
+    build: .
+    container_name: telebot_api
+    restart: always
+    command: uvicorn api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_URL=mysql+pymysql://root:rootpassword@db:3306/telegram_bot
+
+  # Telegram Bot
+  bot:
+    build: .
+    container_name: telebot_bot
+    restart: always
+    command: python bot.py
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_URL=mysql+pymysql://root:rootpassword@db:3306/telegram_bot
+
+volumes:
+  db_data:
